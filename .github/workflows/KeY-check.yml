@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Infos
       run: java -version
@@ -24,7 +24,7 @@ jobs:
       run: tools/statistics.py > statistics.md
 
     - name: Archive statistics as Markdown
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Statistics
         path: statistics.md
