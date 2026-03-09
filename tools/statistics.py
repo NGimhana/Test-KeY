@@ -7,6 +7,10 @@ if __name__ == '__main__':
     with open("statistics.json") as fh:
         data = json.load(fh)
 
+    if not data:
+        print("No statistics available.")
+        exit(0)
+        
     _, v = next(iter(data.items()))
     keys = list(v.keys())
     keys.sort()
