@@ -1,0 +1,30 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Infos
+      run: java -version
+      
+    - name: Run check
+      run: make check
+
+    - name: Create Markdown report
+      run: tools/statistics.py > statistics.md
+
+    - name: Archive statistics as Markdown
+      uses: actions/upload-artifact@v3
+      with:
+        name: Statistics
+        path: statistics.md
